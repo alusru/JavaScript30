@@ -182,6 +182,16 @@
     </li>
   </ul>
 <script>
+  const totalDataTime = [...document.querySelectorAll('[data-time]')].map(timeData => timeData.dataset.time)
+  .map(dataSetTime => {
+   const dataTimeResults = dataSetTime.split(':').map(dataSetTimeSplit => parseFloat(dataSetTimeSplit));
+   return (dataTimeResults[0] * 60) + dataTimeResults[1];
+  }).reduce((a, b) => a + b);
+  let seconds = totalDataTime;
+  const convertToHours = Math.floor(seconds / 3600 ); 
+  const convertToMinutes = Math.floor((seconds % 3600) / 60);
+  seconds = seconds % 60;
+  console.log(convertToHours, convertToMinutes, seconds);
 </script>
 </body>
 </html>
